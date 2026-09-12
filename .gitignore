@@ -1,0 +1,21 @@
+# Virtual Environment
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Data (too large, do not push to GitHub)
+data/raw/
+data/processed/
+
+# Models (too large, do not push to GitHub)
+models/*.pkl
+models/*.joblib
+models/transformer/
+
+# Environment variables (secrets, API keys)
+.env
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
