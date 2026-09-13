@@ -37,4 +37,38 @@ An end-to-end NLP application that classifies text into 7 mental health categori
 5. Run the app: `streamlit run app/app.py`
 
 ## 📂 Project Structure
-(Describe your folder structure here)
+
+```text
+mental-health-nlp/
+│
+├── app/
+│   └── app.py                      # Streamlit UI application code
+│
+├── data/                           # Local only (not tracked in git)
+│   ├── raw/                        # Original downloaded dataset
+│   └── processed/                  # Cleaned train/val/test splits
+│
+├── models/                         # Local only (not tracked in git)
+│   └── transformer/                # DistilBERT saved model weights
+│
+├── notebooks/
+│   └── 02_data_exploration.ipynb   # Exploratory Data Analysis
+│
+├── reports/                        # Evaluation metrics and error analysis
+│
+├── src/
+│   ├── evaluate_models.py          # Final test set evaluation script
+│   ├── inference.py                # Loads model & predicts (used by app.py)
+│   ├── preprocessing.py            # Data cleaning script
+│   ├── split_data.py               # Stratified train/val/test split
+│   ├── train_baseline.py           # TF-IDF + Logistic Regression
+│   ├── train_svm.py                # TF-IDF + Linear SVM
+│   ├── train_transformer.py        # DistilBERT fine-tuning
+│   └── tune_baseline.py            # GridSearchCV hyperparameter tuning
+│
+├── tests/                          # Unit tests
+│
+├── .gitignore                      # Prevents pushing large files/datasets
+├── config.py                       # Project configuration constants
+├── README.md                       # Project documentation
+└── requirements.txt                # Python dependencies for deployment
