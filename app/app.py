@@ -8,35 +8,7 @@ import os
 # --- PATH & MODEL IMPORT SETUP ---
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-try:
-    from src.inference import MentalHealthClassifier
-    MODEL_AVAILABLE = True
-except ImportError:
-    MODEL_AVAILABLE = False
-    class MentalHealthClassifier:
-        def predict(self, text: str):
-            text_lower = text.lower()
-            if any(w in text_lower for w in ["anxious", "panic", "worried", "scared"]):
-                return [
-                    {"label": "Anxiety", "confidence": 0.84}, {"label": "Stress", "confidence": 0.06},
-                    {"label": "Depression", "confidence": 0.05}, {"label": "Normal", "confidence": 0.03},
-                    {"label": "Bipolar", "confidence": 0.01}, {"label": "Suicidal", "confidence": 0.01},
-                    {"label": "Personality disorder", "confidence": 0.00}
-                ]
-            elif any(w in text_lower for w in ["sad", "depressed", "hopeless", "crying"]):
-                return [
-                    {"label": "Depression", "confidence": 0.89}, {"label": "Suicidal", "confidence": 0.05},
-                    {"label": "Anxiety", "confidence": 0.03}, {"label": "Stress", "confidence": 0.02},
-                    {"label": "Normal", "confidence": 0.01}, {"label": "Bipolar", "confidence": 0.00},
-                    {"label": "Personality disorder", "confidence": 0.00}
-                ]
-            else:
-                return [
-                    {"label": "Normal", "confidence": 0.62}, {"label": "Stress", "confidence": 0.21},
-                    {"label": "Anxiety", "confidence": 0.12}, {"label": "Depression", "confidence": 0.05},
-                    {"label": "Bipolar", "confidence": 0.00}, {"label": "Suicidal", "confidence": 0.00},
-                    {"label": "Personality disorder", "confidence": 0.00}
-                ]
+from src.inference import MentalHealthClassifier
 
 # --- STREAMLIT CONFIGURATION ---
 st.set_page_config(
